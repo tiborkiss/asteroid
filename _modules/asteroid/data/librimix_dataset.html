@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asteroid.data.librimix_dataset &mdash; asteroid 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://github.com/mpariente/asteroid_modules/asteroid/data/librimix_dataset.html"/>
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> asteroid
+          
+
+          
+            
+            <img src="../../../_static/favicon.ico" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Start here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../why_use_asteroid.html">What is Asteroid?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../why_use_asteroid.html#who-is-it-for">Who is it for?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#cuda-and-pytorch">CUDA and PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#pip">Pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Asteroid</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/egs_README.html">What is a recipe?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/egs_README.html#how-is-it-organized">How is it organized?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/egs_README.html#how-does-it-work">How does it work?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../supported_datasets.html">Datasets and tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speech-separation">Speech separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#wsj0-2mix-dataset">wsj0-2mix dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#wham-dataset">WHAM dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#whamr-dataset">WHAMR dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#librimix-dataset">LibriMix dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#kinect-wsj-dataset">Kinect-WSJ dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#sms-wsj-dataset">SMS_WSJ dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speech-enhancement">Speech enhancement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#dns-challenge-s-dataset">DNS Challenge’s dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#music-source-separation">Music source separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#musdb18-dataset">MUSDB18 Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#environmental-sound-separation">Environmental sound separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#fuss-dataset">FUSS dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#audio-visual-source-separation">Audio-visual source separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#avspeech-dataset">AVSpeech dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speaker-extraction">Speaker extraction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_and_evaluation.html">Training and Evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../training_and_evaluation.html#training-with-pytorchlightning">Training with PyTorchLightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../training_and_evaluation.html#evaluation">Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/pretrained_models.html">Pretrained models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#using-them">Using them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#model-caching">Model caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#share-your-models">Share your models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#note-about-licenses">Note about licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#my-results-are-worse-than-the-ones-reported-in-the-readme-why">My results are worse than the ones reported in the README, why?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-long-does-it-take-to-train-a-model">How long does it take to train a model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#can-i-use-the-pretrained-models-for-commercial-purposes">Can I use the pretrained models for commercial purposes?</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Notebooks and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/01_AsteroidGettingStarted.ipynb">NB: Getting stated with Asteroid</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/02_Filterbank.ipynb">NB: Understanding the Filterbank API</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/03_PITLossWrapper.ipynb">NB: Our PITLossWrapper explained</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1BDNQZBJCDcwQhSguf3XBE7ff2KXhWu_j">Community NB: Numpy vs. Asteroid STFT</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/data.html">PyTorch Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#librimix">LibriMix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#wsj0mix">Wsj0mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#wham">WHAM!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#whamr">WHAMR!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#sms-wsj">SMS-WSJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#kinectwsjmix">KinectWSJMix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#dnsdataset">DNSDataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#musdb18">MUSDB18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#avspeech">AVSpeech</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/filterbanks.html">Filterbank API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#filterbank-encoder-and-decoder">Filterbank, Encoder and Decoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#learnable-filterbanks">Learnable filterbanks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.free_fb"><span class="hidden-section">Free</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#analytic-free"><span class="hidden-section">Analytic Free</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#parameterized-sinc"><span class="hidden-section">Parameterized Sinc</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#fixed-filterbanks">Fixed filterbanks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.stft_fb"><span class="hidden-section">STFT</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#mp-gtfb"><span class="hidden-section">MP-GTFB</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#transforms">Transforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#griffin-lim-and-misi"><span class="hidden-section">Griffin-Lim and MISI</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.transforms"><span class="hidden-section">Complex transforms</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/blocks.html">DNN building blocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.convolutional">Convolutional blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.recurrent">Recurrent blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.norms">Norms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.base_models">Base classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.conv_tasnet">Ready-to-use models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.zenodo">Publishing models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/losses.html">Losses &amp; Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#module-asteroid.losses.pit_wrapper">Permutation invariant training (PIT) made easy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#available-loss-functions">Available loss functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#mse"><span class="hidden-section">MSE</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#sdr"><span class="hidden-section">SDR</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#pmsqe"><span class="hidden-section">PMSQE</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#stoi"><span class="hidden-section">STOI</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#multiscale-spectral-loss"><span class="hidden-section">MultiScale Spectral Loss</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#deep-clustering-affinity-loss"><span class="hidden-section">Deep clustering (Affinity) loss</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#computing-metrics">Computing metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/system.html">Lightning Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/optimizers.html">Optimizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/utils.html">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#parser-utils">Parser utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.torch_utils">Torch utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.hub_utils">Hub utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.generic_utils">Generic utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/cli.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribution_guide.html">Asteroid High-Level Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#the-asteroid-contribution-process">The Asteroid Contribution Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#proposing-new-features">Proposing new features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#reporting-issues">Reporting Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#implementing-features-or-fixing-bugs">Implementing Features or Fixing Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#adding-tutorials">Adding Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#improving-documentation-tutorials">Improving Documentation &amp; Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#participating-in-online-discussions">Participating in online discussions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#submitting-pull-requests-to-fix-open-issues">Submitting pull requests to fix open issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#reviewing-open-pull-requests">Reviewing open pull requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#improving-code-readability">Improving code readability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#adding-test-cases-to-make-the-codebase-more-robust">Adding test cases to make the codebase more robust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#promoting-asteroid">Promoting Asteroid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#triaging-issues">Triaging issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#about-open-source-development">About open source development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#common-mistakes-to-avoid">Common Mistakes To Avoid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#frequently-asked-questions">Frequently asked questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#attribution">Attribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#source-code-contributions">Source code contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#writing-new-recipes">Writing new recipes.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#improving-the-docs">Improving the docs.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#coding-style">Coding style</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">asteroid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../asteroid.html">asteroid</a> &raquo;</li>
+        
+      <li>asteroid.data.librimix_dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for asteroid.data.librimix_dataset</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">hub</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+
+<span class="kn">from</span> <span class="nn">.wham_dataset</span> <span class="kn">import</span> <span class="n">wham_noise_license</span>
+
+<span class="n">MINI_URL</span> <span class="o">=</span> <span class="s2">&quot;https://zenodo.org/record/3871592/files/MiniLibriMix.zip?download=1&quot;</span>
+
+
+<div class="viewcode-block" id="LibriMix"><a class="viewcode-back" href="../../../package_reference/data.html#asteroid.data.LibriMix">[docs]</a><span class="k">class</span> <span class="nc">LibriMix</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;&quot; Dataset class for Librimix source separation tasks.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        csv_dir (str): The path to the metatdata file</span>
+<span class="sd">        task (str): One of ``&#39;enh_single&#39;``, ``&#39;enh_both&#39;``, ``&#39;sep_clean&#39;`` or</span>
+<span class="sd">            ``&#39;sep_noisy&#39;``.</span>
+
+<span class="sd">            * ``&#39;enh_single&#39;`` for single speaker speech enhancement.</span>
+<span class="sd">            * ``&#39;enh_both&#39;`` for multi speaker speech enhancement.</span>
+<span class="sd">            * ``&#39;sep_clean&#39;`` for two-speaker clean source separation.</span>
+<span class="sd">            * ``&#39;sep_noisy&#39;`` for two-speaker noisy source separation.</span>
+
+<span class="sd">        sample_rate (int) : The sample rate of the sources and mixtures</span>
+<span class="sd">        n_src (int) : The number of sources in the mixture</span>
+<span class="sd">        segment (int) : The desired sources and mixtures length in s</span>
+
+<span class="sd">    References</span>
+<span class="sd">        &quot;LibriMix: An Open-Source Dataset for Generalizable Speech Separation&quot;,</span>
+<span class="sd">        Cosentino et al. 2020.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;LibriMix&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_dir</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;sep_clean&quot;</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">16000</span><span class="p">,</span> <span class="n">n_src</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">csv_dir</span> <span class="o">=</span> <span class="n">csv_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+        <span class="c1"># Get the csv corresponding to the task</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="s2">&quot;enh_single&quot;</span><span class="p">:</span>
+            <span class="n">md_file</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">csv_dir</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;single&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">csv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_dir</span><span class="p">,</span> <span class="n">md_file</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="s2">&quot;enh_both&quot;</span><span class="p">:</span>
+            <span class="n">md_file</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">csv_dir</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;both&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">csv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_dir</span><span class="p">,</span> <span class="n">md_file</span><span class="p">)</span>
+            <span class="n">md_clean_file</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">csv_dir</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;clean&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">df_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">csv_dir</span><span class="p">,</span> <span class="n">md_clean_file</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="s2">&quot;sep_clean&quot;</span><span class="p">:</span>
+            <span class="n">md_file</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">csv_dir</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;clean&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">csv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_dir</span><span class="p">,</span> <span class="n">md_file</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="s2">&quot;sep_noisy&quot;</span><span class="p">:</span>
+            <span class="n">md_file</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">csv_dir</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;both&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">csv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_dir</span><span class="p">,</span> <span class="n">md_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">segment</span> <span class="o">=</span> <span class="n">segment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">=</span> <span class="n">sample_rate</span>
+        <span class="c1"># Open csv file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_path</span><span class="p">)</span>
+        <span class="c1"># Get rid of the utterances too short</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">max_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">seg_len</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">segment</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">)</span>
+            <span class="c1"># Ignore the file shorter than the desired_length</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg_len</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Drop </span><span class="si">{</span><span class="n">max_len</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> utterances from </span><span class="si">{</span><span class="n">max_len</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;(shorter than </span><span class="si">{</span><span class="n">segment</span><span class="si">}</span><span class="s2"> seconds)&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">seg_len</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_src</span> <span class="o">=</span> <span class="n">n_src</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="c1"># Get the row in dataframe</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="c1"># Get mixture path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mixture_path</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mixture_path&quot;</span><span class="p">]</span>
+        <span class="n">sources_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># If there is a seg start point is set randomly</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg_len</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg_len</span><span class="p">)</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg_len</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># If task is enh_both then the source is the clean mixture</span>
+        <span class="k">if</span> <span class="s2">&quot;enh_both&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">:</span>
+            <span class="n">mix_clean_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df_clean</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s2">&quot;mixture_path&quot;</span><span class="p">]</span>
+            <span class="n">s</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">mix_clean_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">)</span>
+            <span class="n">sources_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Read sources</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_src</span><span class="p">):</span>
+                <span class="n">source_path</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;source_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">_path&quot;</span><span class="p">]</span>
+                <span class="n">s</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">)</span>
+                <span class="n">sources_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="c1"># Read the mixture</span>
+        <span class="n">mixture</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mixture_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">)</span>
+        <span class="c1"># Convert to torch tensor</span>
+        <span class="n">mixture</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">mixture</span><span class="p">)</span>
+        <span class="c1"># Stack sources</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">sources_list</span><span class="p">)</span>
+        <span class="c1"># Convert sources to tensor</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mixture</span><span class="p">,</span> <span class="n">sources</span>
+
+<div class="viewcode-block" id="LibriMix.mini_from_download"><a class="viewcode-back" href="../../../package_reference/data.html#asteroid.data.LibriMix.mini_from_download">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">mini_from_download</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Downloads MiniLibriMix and returns train and validation Dataset.</span>
+<span class="sd">        If you want to instantiate the Dataset by yourself, call</span>
+<span class="sd">        `mini_download` that returns the path to the path to the metadata files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **kwargs: keyword arguments to pass the `LibriMix`, see `__init__`.</span>
+<span class="sd">                The kwargs will be fed to both the training set and validation</span>
+<span class="sd">                set</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            train_set, val_set: training and validation instances of</span>
+<span class="sd">                `LibriMix` (data.Dataset).</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from asteroid.data import LibriMix</span>
+<span class="sd">            &gt;&gt;&gt; train_set, val_set = LibriMix.mini_from_download(task=&#39;sep_clean&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># kwargs checks</span>
+        <span class="k">assert</span> <span class="s2">&quot;csv_dir&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Cannot specify csv_dir when downloading.&quot;</span>
+        <span class="k">assert</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;sep_clean&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;sep_clean&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sep_noisy&quot;</span><span class="p">,</span>
+        <span class="p">],</span> <span class="s2">&quot;Only clean and noisy separation are supported in MiniLibriMix.&quot;</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sample_rate&quot;</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8000</span>
+        <span class="p">),</span> <span class="s2">&quot;Only 8kHz sample rate is supported in MiniLibriMix.&quot;</span>
+        <span class="c1"># Download LibriMix in current directory</span>
+        <span class="n">meta_path</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">mini_download</span><span class="p">()</span>
+        <span class="c1"># Create dataset instances</span>
+        <span class="n">train_set</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">meta_path</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">),</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">val_set</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">meta_path</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">),</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">train_set</span><span class="p">,</span> <span class="n">val_set</span></div>
+
+<div class="viewcode-block" id="LibriMix.mini_download"><a class="viewcode-back" href="../../../package_reference/data.html#asteroid.data.LibriMix.mini_download">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">mini_download</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot; Downloads MiniLibriMix from Zenodo in current directory</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The path to the metadata directory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mini_dir</span> <span class="o">=</span> <span class="s2">&quot;./MiniLibriMix/&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">mini_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Download zip (or cached)</span>
+        <span class="n">zip_path</span> <span class="o">=</span> <span class="n">mini_dir</span> <span class="o">+</span> <span class="s2">&quot;MiniLibriMix.zip&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">):</span>
+            <span class="n">hub</span><span class="o">.</span><span class="n">download_url_to_file</span><span class="p">(</span><span class="n">MINI_URL</span><span class="p">,</span> <span class="n">zip_path</span><span class="p">)</span>
+        <span class="c1"># Unzip zip</span>
+        <span class="n">cond</span> <span class="o">=</span> <span class="nb">all</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">&quot;MiniLibriMix/&quot;</span> <span class="o">+</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">]])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cond</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+                <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s2">&quot;./&quot;</span><span class="p">)</span>  <span class="c1"># Will unzip in MiniLibriMix</span>
+        <span class="c1"># Reorder metadata</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="s2">&quot;MiniLibriMix/metadata/&quot;</span>
+        <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">]:</span>
+            <span class="n">dst</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;MiniLibriMix/metadata/</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">/&quot;</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="p">[</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">src</span> <span class="o">+</span> <span class="n">f</span><span class="p">,</span> <span class="n">dst</span> <span class="o">+</span> <span class="n">f</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">f</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">src</span> <span class="o">+</span> <span class="n">f</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="k">return</span> <span class="s2">&quot;./MiniLibriMix/metadata&quot;</span></div>
+
+<div class="viewcode-block" id="LibriMix.get_infos"><a class="viewcode-back" href="../../../package_reference/data.html#asteroid.data.LibriMix.get_infos">[docs]</a>    <span class="k">def</span> <span class="nf">get_infos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Get dataset infos (for publishing models).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict, dataset infos with keys `dataset`, `task` and `licences`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">infos</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">infos</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dataset_name</span><span class="p">()</span>
+        <span class="n">infos</span><span class="p">[</span><span class="s2">&quot;task&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">==</span> <span class="s2">&quot;sep_clean&quot;</span><span class="p">:</span>
+            <span class="n">data_license</span> <span class="o">=</span> <span class="p">[</span><span class="n">librispeech_license</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data_license</span> <span class="o">=</span> <span class="p">[</span><span class="n">librispeech_license</span><span class="p">,</span> <span class="n">wham_noise_license</span><span class="p">]</span>
+        <span class="n">infos</span><span class="p">[</span><span class="s2">&quot;licenses&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_license</span>
+        <span class="k">return</span> <span class="n">infos</span></div>
+
+<div class="viewcode-block" id="LibriMix._dataset_name"><a class="viewcode-back" href="../../../apidoc/asteroid.data.librimix_dataset.html#asteroid.data.LibriMix._dataset_name">[docs]</a>    <span class="k">def</span> <span class="nf">_dataset_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Differentiate between 2 and 3 sources.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Libri</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_src</span><span class="si">}</span><span class="s2">Mix&quot;</span></div></div>
+
+
+<span class="n">librispeech_license</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;LibriSpeech ASR corpus&quot;</span><span class="p">,</span>
+    <span class="n">title_link</span><span class="o">=</span><span class="s2">&quot;http://www.openslr.org/12&quot;</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Vassil Panayotov&quot;</span><span class="p">,</span>
+    <span class="n">author_link</span><span class="o">=</span><span class="s2">&quot;https://github.com/vdp&quot;</span><span class="p">,</span>
+    <span class="n">license</span><span class="o">=</span><span class="s2">&quot;CC BY 4.0&quot;</span><span class="p">,</span>
+    <span class="n">license_link</span><span class="o">=</span><span class="s2">&quot;https://creativecommons.org/licenses/by/4.0/&quot;</span><span class="p">,</span>
+    <span class="n">non_commercial</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Oncoming
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

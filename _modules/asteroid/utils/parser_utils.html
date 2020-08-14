@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asteroid.utils.parser_utils &mdash; asteroid 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://github.com/mpariente/asteroid_modules/asteroid/utils/parser_utils.html"/>
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> asteroid
+          
+
+          
+            
+            <img src="../../../_static/favicon.ico" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Start here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../why_use_asteroid.html">What is Asteroid?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../why_use_asteroid.html#who-is-it-for">Who is it for?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#cuda-and-pytorch">CUDA and PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#pip">Pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Asteroid</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/egs_README.html">What is a recipe?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/egs_README.html#how-is-it-organized">How is it organized?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/egs_README.html#how-does-it-work">How does it work?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../supported_datasets.html">Datasets and tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speech-separation">Speech separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#wsj0-2mix-dataset">wsj0-2mix dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#wham-dataset">WHAM dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#whamr-dataset">WHAMR dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#librimix-dataset">LibriMix dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#kinect-wsj-dataset">Kinect-WSJ dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#sms-wsj-dataset">SMS_WSJ dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speech-enhancement">Speech enhancement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#dns-challenge-s-dataset">DNS Challenge’s dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#music-source-separation">Music source separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#musdb18-dataset">MUSDB18 Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#environmental-sound-separation">Environmental sound separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#fuss-dataset">FUSS dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#audio-visual-source-separation">Audio-visual source separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#avspeech-dataset">AVSpeech dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speaker-extraction">Speaker extraction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_and_evaluation.html">Training and Evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../training_and_evaluation.html#training-with-pytorchlightning">Training with PyTorchLightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../training_and_evaluation.html#evaluation">Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/pretrained_models.html">Pretrained models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#using-them">Using them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#model-caching">Model caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#share-your-models">Share your models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#note-about-licenses">Note about licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#my-results-are-worse-than-the-ones-reported-in-the-readme-why">My results are worse than the ones reported in the README, why?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-long-does-it-take-to-train-a-model">How long does it take to train a model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#can-i-use-the-pretrained-models-for-commercial-purposes">Can I use the pretrained models for commercial purposes?</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Notebooks and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/01_AsteroidGettingStarted.ipynb">NB: Getting stated with Asteroid</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/02_Filterbank.ipynb">NB: Understanding the Filterbank API</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/03_PITLossWrapper.ipynb">NB: Our PITLossWrapper explained</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1BDNQZBJCDcwQhSguf3XBE7ff2KXhWu_j">Community NB: Numpy vs. Asteroid STFT</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/data.html">PyTorch Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#librimix">LibriMix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#wsj0mix">Wsj0mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#wham">WHAM!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#whamr">WHAMR!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#sms-wsj">SMS-WSJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#kinectwsjmix">KinectWSJMix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#dnsdataset">DNSDataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#musdb18">MUSDB18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#avspeech">AVSpeech</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/filterbanks.html">Filterbank API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#filterbank-encoder-and-decoder">Filterbank, Encoder and Decoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#learnable-filterbanks">Learnable filterbanks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.free_fb"><span class="hidden-section">Free</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#analytic-free"><span class="hidden-section">Analytic Free</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#parameterized-sinc"><span class="hidden-section">Parameterized Sinc</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#fixed-filterbanks">Fixed filterbanks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.stft_fb"><span class="hidden-section">STFT</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#mp-gtfb"><span class="hidden-section">MP-GTFB</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#transforms">Transforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#griffin-lim-and-misi"><span class="hidden-section">Griffin-Lim and MISI</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.transforms"><span class="hidden-section">Complex transforms</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/blocks.html">DNN building blocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.convolutional">Convolutional blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.recurrent">Recurrent blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.norms">Norms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.base_models">Base classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.conv_tasnet">Ready-to-use models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.zenodo">Publishing models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/losses.html">Losses &amp; Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#module-asteroid.losses.pit_wrapper">Permutation invariant training (PIT) made easy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#available-loss-functions">Available loss functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#mse"><span class="hidden-section">MSE</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#sdr"><span class="hidden-section">SDR</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#pmsqe"><span class="hidden-section">PMSQE</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#stoi"><span class="hidden-section">STOI</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#multiscale-spectral-loss"><span class="hidden-section">MultiScale Spectral Loss</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#deep-clustering-affinity-loss"><span class="hidden-section">Deep clustering (Affinity) loss</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#computing-metrics">Computing metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/system.html">Lightning Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/optimizers.html">Optimizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/utils.html">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#parser-utils">Parser utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.torch_utils">Torch utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.hub_utils">Hub utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.generic_utils">Generic utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/cli.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribution_guide.html">Asteroid High-Level Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#the-asteroid-contribution-process">The Asteroid Contribution Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#proposing-new-features">Proposing new features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#reporting-issues">Reporting Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#implementing-features-or-fixing-bugs">Implementing Features or Fixing Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#adding-tutorials">Adding Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#improving-documentation-tutorials">Improving Documentation &amp; Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#participating-in-online-discussions">Participating in online discussions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#submitting-pull-requests-to-fix-open-issues">Submitting pull requests to fix open issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#reviewing-open-pull-requests">Reviewing open pull requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#improving-code-readability">Improving code readability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#adding-test-cases-to-make-the-codebase-more-robust">Adding test cases to make the codebase more robust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#promoting-asteroid">Promoting Asteroid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#triaging-issues">Triaging issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#about-open-source-development">About open source development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#common-mistakes-to-avoid">Common Mistakes To Avoid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#frequently-asked-questions">Frequently asked questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#attribution">Attribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#source-code-contributions">Source code contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#writing-new-recipes">Writing new recipes.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#improving-the-docs">Improving the docs.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#coding-style">Coding style</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">asteroid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../asteroid.html">asteroid</a> &raquo;</li>
+        
+      <li>asteroid.utils.parser_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for asteroid.utils.parser_utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">argparse</span>
+
+
+<div class="viewcode-block" id="prepare_parser_from_dict"><a class="viewcode-back" href="../../../package_reference/utils.html#asteroid.utils.prepare_parser_from_dict">[docs]</a><span class="k">def</span> <span class="nf">prepare_parser_from_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Prepare an argparser from a dictionary.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dic (dict): Two-level config dictionary with unique bottom-level keys.</span>
+<span class="sd">        parser (argparse.ArgumentParser, optional): If a parser already</span>
+<span class="sd">            exists, add the keys from the dictionary on the top of it.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        argparse.ArgumentParser:</span>
+<span class="sd">            Parser instance with groups corresponding to the first level keys</span>
+<span class="sd">            and arguments corresponding to the second level keys with default</span>
+<span class="sd">            values given by the values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">standardized_entry_type</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; If the default value is None, replace NoneType by str_int_float.</span>
+<span class="sd">            If the default value is boolean, look for boolean strings.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">str_int_float</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">str2bool</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">str2bool_arg</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">parser</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">dic</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">entry_type</span> <span class="o">=</span> <span class="n">standardized_entry_type</span><span class="p">(</span><span class="n">dic</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">kk</span><span class="p">])</span>
+            <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--&quot;</span> <span class="o">+</span> <span class="n">kk</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">dic</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">kk</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">entry_type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parser</span></div>
+
+
+<div class="viewcode-block" id="str_int_float"><a class="viewcode-back" href="../../../package_reference/utils.html#asteroid.utils.str_int_float">[docs]</a><span class="k">def</span> <span class="nf">str_int_float</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Type to convert strings to int, float (in this order) if possible.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        value (str): Value to convert.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int, float, str: Converted value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">isint</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="str2bool"><a class="viewcode-back" href="../../../package_reference/utils.html#asteroid.utils.str2bool">[docs]</a><span class="k">def</span> <span class="nf">str2bool</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Type to convert strings to Boolean (returns input if not boolean) &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="str2bool_arg"><a class="viewcode-back" href="../../../package_reference/utils.html#asteroid.utils.str2bool_arg">[docs]</a><span class="k">def</span> <span class="nf">str2bool_arg</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Argparse type to convert strings to Boolean &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">str2bool</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="s2">&quot;Boolean value expected.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="isfloat"><a class="viewcode-back" href="../../../package_reference/utils.html#asteroid.utils.isfloat">[docs]</a><span class="k">def</span> <span class="nf">isfloat</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Computes whether `value` can be cast to a float.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        value (str): Value to check.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Whether `value` can be cast to a float.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="isint"><a class="viewcode-back" href="../../../package_reference/utils.html#asteroid.utils.isint">[docs]</a><span class="k">def</span> <span class="nf">isint</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Computes whether `value` can be cast to an int</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        value (str): Value to check.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Whether `value` can be cast to an int.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="parse_args_as_dict"><a class="viewcode-back" href="../../../package_reference/utils.html#asteroid.utils.parse_args_as_dict">[docs]</a><span class="k">def</span> <span class="nf">parse_args_as_dict</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">return_plain_args</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get a dict of dicts out of process `parser.parse_args()`</span>
+
+<span class="sd">    Top-level keys corresponding to groups and bottom-level keys corresponding</span>
+<span class="sd">    to arguments. Under `&#39;main_args&#39;`, the arguments which don&#39;t belong to a</span>
+<span class="sd">    argparse group (i.e main arguments defined before parsing from a dict) can</span>
+<span class="sd">    be found.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        parser (argparse.ArgumentParser): ArgumentParser instance containing</span>
+<span class="sd">            groups. Output of `prepare_parser_from_dict`.</span>
+<span class="sd">        return_plain_args (bool): Whether to return the output or</span>
+<span class="sd">            `parser.parse_args()`.</span>
+<span class="sd">        args (list): List of arguments as read from the command line.</span>
+<span class="sd">            Used for unit testing.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict:</span>
+<span class="sd">            Dictionary of dictionaries containing the arguments. Optionally the</span>
+<span class="sd">            direct output `parser.parse_args()`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">args_dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">parser</span><span class="o">.</span><span class="n">_action_groups</span><span class="p">:</span>
+        <span class="n">group_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="o">.</span><span class="n">dest</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dest</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">_group_actions</span><span class="p">}</span>
+        <span class="n">args_dic</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_dict</span>
+    <span class="n">args_dic</span><span class="p">[</span><span class="s2">&quot;main_args&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args_dic</span><span class="p">[</span><span class="s2">&quot;optional arguments&quot;</span><span class="p">]</span>
+    <span class="k">del</span> <span class="n">args_dic</span><span class="p">[</span><span class="s2">&quot;optional arguments&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">return_plain_args</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">args_dic</span><span class="p">,</span> <span class="n">args</span>
+    <span class="k">return</span> <span class="n">args_dic</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Oncoming
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

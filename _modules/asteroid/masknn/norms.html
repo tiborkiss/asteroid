@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asteroid.masknn.norms &mdash; asteroid 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://github.com/mpariente/asteroid_modules/asteroid/masknn/norms.html"/>
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> asteroid
+          
+
+          
+            
+            <img src="../../../_static/favicon.ico" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Start here</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../why_use_asteroid.html">What is Asteroid?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../why_use_asteroid.html#who-is-it-for">Who is it for?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#cuda-and-pytorch">CUDA and PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#pip">Pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Asteroid</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/egs_README.html">What is a recipe?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/egs_README.html#how-is-it-organized">How is it organized?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/egs_README.html#how-does-it-work">How does it work?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../supported_datasets.html">Datasets and tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speech-separation">Speech separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#wsj0-2mix-dataset">wsj0-2mix dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#wham-dataset">WHAM dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#whamr-dataset">WHAMR dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#librimix-dataset">LibriMix dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#kinect-wsj-dataset">Kinect-WSJ dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#sms-wsj-dataset">SMS_WSJ dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speech-enhancement">Speech enhancement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#dns-challenge-s-dataset">DNS Challenge’s dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#music-source-separation">Music source separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#musdb18-dataset">MUSDB18 Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#environmental-sound-separation">Environmental sound separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#fuss-dataset">FUSS dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#audio-visual-source-separation">Audio-visual source separation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../supported_datasets.html#avspeech-dataset">AVSpeech dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../supported_datasets.html#speaker-extraction">Speaker extraction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_and_evaluation.html">Training and Evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../training_and_evaluation.html#training-with-pytorchlightning">Training with PyTorchLightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../training_and_evaluation.html#evaluation">Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/pretrained_models.html">Pretrained models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#using-them">Using them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#model-caching">Model caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#share-your-models">Share your models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/pretrained_models.html#note-about-licenses">Note about licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#my-results-are-worse-than-the-ones-reported-in-the-readme-why">My results are worse than the ones reported in the README, why?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#how-long-does-it-take-to-train-a-model">How long does it take to train a model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faq.html#can-i-use-the-pretrained-models-for-commercial-purposes">Can I use the pretrained models for commercial purposes?</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Notebooks and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/01_AsteroidGettingStarted.ipynb">NB: Getting stated with Asteroid</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/02_Filterbank.ipynb">NB: Understanding the Filterbank API</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://colab.research.google.com/github/mpariente/asteroid/blob/master/notebooks/03_PITLossWrapper.ipynb">NB: Our PITLossWrapper explained</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1BDNQZBJCDcwQhSguf3XBE7ff2KXhWu_j">Community NB: Numpy vs. Asteroid STFT</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/data.html">PyTorch Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#librimix">LibriMix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#wsj0mix">Wsj0mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#wham">WHAM!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#whamr">WHAMR!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#sms-wsj">SMS-WSJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#kinectwsjmix">KinectWSJMix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#dnsdataset">DNSDataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#musdb18">MUSDB18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/data.html#avspeech">AVSpeech</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/filterbanks.html">Filterbank API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#filterbank-encoder-and-decoder">Filterbank, Encoder and Decoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#learnable-filterbanks">Learnable filterbanks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.free_fb"><span class="hidden-section">Free</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#analytic-free"><span class="hidden-section">Analytic Free</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#parameterized-sinc"><span class="hidden-section">Parameterized Sinc</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#fixed-filterbanks">Fixed filterbanks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.stft_fb"><span class="hidden-section">STFT</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#mp-gtfb"><span class="hidden-section">MP-GTFB</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/filterbanks.html#transforms">Transforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#griffin-lim-and-misi"><span class="hidden-section">Griffin-Lim and MISI</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/filterbanks.html#module-asteroid.filterbanks.transforms"><span class="hidden-section">Complex transforms</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/blocks.html">DNN building blocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.convolutional">Convolutional blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.recurrent">Recurrent blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/blocks.html#module-asteroid.masknn.norms">Norms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.base_models">Base classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.conv_tasnet">Ready-to-use models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/models.html#module-asteroid.models.zenodo">Publishing models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/losses.html">Losses &amp; Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#module-asteroid.losses.pit_wrapper">Permutation invariant training (PIT) made easy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#available-loss-functions">Available loss functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#mse"><span class="hidden-section">MSE</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#sdr"><span class="hidden-section">SDR</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#pmsqe"><span class="hidden-section">PMSQE</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#stoi"><span class="hidden-section">STOI</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#multiscale-spectral-loss"><span class="hidden-section">MultiScale Spectral Loss</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../package_reference/losses.html#deep-clustering-affinity-loss"><span class="hidden-section">Deep clustering (Affinity) loss</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/losses.html#computing-metrics">Computing metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/system.html">Lightning Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/optimizers.html">Optimizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/utils.html">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#parser-utils">Parser utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.torch_utils">Torch utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.hub_utils">Hub utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../package_reference/utils.html#module-asteroid.utils.generic_utils">Generic utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_reference/cli.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribution_guide.html">Asteroid High-Level Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#the-asteroid-contribution-process">The Asteroid Contribution Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#proposing-new-features">Proposing new features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#reporting-issues">Reporting Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#implementing-features-or-fixing-bugs">Implementing Features or Fixing Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#adding-tutorials">Adding Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#improving-documentation-tutorials">Improving Documentation &amp; Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#participating-in-online-discussions">Participating in online discussions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#submitting-pull-requests-to-fix-open-issues">Submitting pull requests to fix open issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#reviewing-open-pull-requests">Reviewing open pull requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#improving-code-readability">Improving code readability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#adding-test-cases-to-make-the-codebase-more-robust">Adding test cases to make the codebase more robust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#promoting-asteroid">Promoting Asteroid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contribution_guide.html#triaging-issues">Triaging issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#about-open-source-development">About open source development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#common-mistakes-to-avoid">Common Mistakes To Avoid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#frequently-asked-questions">Frequently asked questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contribution_guide.html#attribution">Attribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#source-code-contributions">Source code contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#writing-new-recipes">Writing new recipes.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#improving-the-docs">Improving the docs.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../readmes/CONTRIBUTING.html#coding-style">Coding style</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">asteroid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../asteroid.html">asteroid</a> &raquo;</li>
+        
+      <li>asteroid.masknn.norms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for asteroid.masknn.norms</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span> <span class="nn">torch.nn.modules.batchnorm</span> <span class="kn">import</span> <span class="n">_BatchNorm</span>
+
+<span class="n">EPS</span> <span class="o">=</span> <span class="mf">1e-8</span>
+
+
+<div class="viewcode-block" id="_LayerNorm"><a class="viewcode-back" href="../../../apidoc/asteroid.masknn.norms.html#asteroid.masknn.norms._LayerNorm">[docs]</a><span class="k">class</span> <span class="nc">_LayerNorm</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Layer Normalization base class.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_LayerNorm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channel_size</span> <span class="o">=</span> <span class="n">channel_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">channel_size</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">channel_size</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="_LayerNorm.apply_gain_and_bias"><a class="viewcode-back" href="../../../apidoc/asteroid.masknn.norms.html#asteroid.masknn.norms._LayerNorm.apply_gain_and_bias">[docs]</a>    <span class="k">def</span> <span class="nf">apply_gain_and_bias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">normed_x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Assumes input of size `[batch, chanel, *]`. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">normed_x</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="GlobLN"><a class="viewcode-back" href="../../../package_reference/masknn.html#asteroid.masknn.norms.GlobLN">[docs]</a><span class="k">class</span> <span class="nc">GlobLN</span><span class="p">(</span><span class="n">_LayerNorm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Global Layer Normalization (globLN).&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="GlobLN.forward"><a class="viewcode-back" href="../../../package_reference/blocks.html#asteroid.masknn.norms.GlobLN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Applies forward pass.</span>
+
+<span class="sd">        Works for any input size &gt; 2D.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (:class:`torch.Tensor`): Shape `[batch, chan, *]`</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :class:`torch.Tensor`: gLN_x `[batch, chan, *]`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)))</span>
+        <span class="n">mean</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_gain_and_bias</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">var</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="ChanLN"><a class="viewcode-back" href="../../../package_reference/masknn.html#asteroid.masknn.norms.ChanLN">[docs]</a><span class="k">class</span> <span class="nc">ChanLN</span><span class="p">(</span><span class="n">_LayerNorm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Channel-wise Layer Normalization (chanLN).&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ChanLN.forward"><a class="viewcode-back" href="../../../package_reference/blocks.html#asteroid.masknn.norms.ChanLN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Applies forward pass.</span>
+
+<span class="sd">        Works for any input size &gt; 2D.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (:class:`torch.Tensor`): `[batch, chan, *]`</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :class:`torch.Tensor`: chanLN_x `[batch, chan, *]`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_gain_and_bias</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">var</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="CumLN"><a class="viewcode-back" href="../../../package_reference/masknn.html#asteroid.masknn.norms.CumLN">[docs]</a><span class="k">class</span> <span class="nc">CumLN</span><span class="p">(</span><span class="n">_LayerNorm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cumulative Global layer normalization(cumLN).&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CumLN.forward"><a class="viewcode-back" href="../../../package_reference/blocks.html#asteroid.masknn.norms.CumLN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (:class:`torch.Tensor`): Shape `[batch, channels, length]`</span>
+<span class="sd">        Returns:</span>
+<span class="sd">             :class:`torch.Tensor`: cumLN_x `[batch, channels, length]`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch</span><span class="p">,</span> <span class="n">chan</span><span class="p">,</span> <span class="n">spec_len</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="n">cum_sum</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">cum_pow_sum</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">chan</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">chan</span> <span class="o">*</span> <span class="p">(</span><span class="n">spec_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="n">chan</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="p">)</span>
+        <span class="n">cum_mean</span> <span class="o">=</span> <span class="n">cum_sum</span> <span class="o">/</span> <span class="n">cnt</span>
+        <span class="n">cum_var</span> <span class="o">=</span> <span class="n">cum_pow_sum</span> <span class="o">-</span> <span class="n">cum_mean</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_gain_and_bias</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">cum_mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">cum_var</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="FeatsGlobLN"><a class="viewcode-back" href="../../../package_reference/blocks.html#asteroid.masknn.norms.FeatsGlobLN">[docs]</a><span class="k">class</span> <span class="nc">FeatsGlobLN</span><span class="p">(</span><span class="n">_LayerNorm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;feature-wise global Layer Normalization (FeatsGlobLN).</span>
+<span class="sd">    Applies normalization over frames for each channel.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="FeatsGlobLN.forward"><a class="viewcode-back" href="../../../package_reference/blocks.html#asteroid.masknn.norms.FeatsGlobLN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Applies forward pass.</span>
+
+<span class="sd">        Works for any input size &gt; 2D.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (:class:`torch.Tensor`): `[batch, chan, time]`</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :class:`torch.Tensor`: chanLN_x `[batch, chan, time]`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">stop</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">stop</span><span class="p">))</span>
+
+        <span class="n">mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_gain_and_bias</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">var</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="BatchNorm"><a class="viewcode-back" href="../../../package_reference/blocks.html#asteroid.masknn.norms.BatchNorm">[docs]</a><span class="k">class</span> <span class="nc">BatchNorm</span><span class="p">(</span><span class="n">_BatchNorm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wrapper class for pytorch BatchNorm1D and BatchNorm2D&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="BatchNorm._check_input_dim"><a class="viewcode-back" href="../../../apidoc/asteroid.masknn.norms.html#asteroid.masknn.norms.BatchNorm._check_input_dim">[docs]</a>    <span class="k">def</span> <span class="nf">_check_input_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;expected 4D or 3D input (got </span><span class="si">{}</span><span class="s2">D input)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()))</span></div></div>
+
+
+<span class="c1"># Aliases.</span>
+<span class="n">gLN</span> <span class="o">=</span> <span class="n">GlobLN</span>
+<span class="n">fgLN</span> <span class="o">=</span> <span class="n">FeatsGlobLN</span>
+<span class="n">cLN</span> <span class="o">=</span> <span class="n">ChanLN</span>
+<span class="n">cgLN</span> <span class="o">=</span> <span class="n">CumLN</span>
+<span class="n">bN</span> <span class="o">=</span> <span class="n">BatchNorm</span>
+
+
+<div class="viewcode-block" id="get"><a class="viewcode-back" href="../../../package_reference/blocks.html#asteroid.masknn.norms.get">[docs]</a><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Returns a norm class from a string. Returns its input if it</span>
+<span class="sd">    is callable (already a :class:`._LayerNorm` for example).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        identifier (str or Callable or None): the norm identifier.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :class:`._LayerNorm` or None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">identifier</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="n">callable</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">identifier</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">identifier</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Could not interpret normalization identifier: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">identifier</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">cls</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Could not interpret normalization identifier: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">identifier</span><span class="p">))</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Oncoming
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
